@@ -19,11 +19,11 @@ import java.io.FileWriter;
  */
 public class Tournament
 {
-    static final int elections = 1000; //number of elections to be performed
-    static final int debug = 0;
+    static final int elections = 1; //number of elections to be performed
+    static final int debug = 1;
     public static void main(String [] args)
     {
-        System.out.println(System.nanoTime());
+        long startTime = System.nanoTime();
         
         Player[] players = new Player[] {  //There's no separate file for contestants
             new ExampleBot(elections), //name
@@ -74,12 +74,15 @@ public class Tournament
                 return score.get(b).compareTo(score.get(a));
             }
         });
+        System.out.printf("%nLeaderboard:%n");;
         for(Player p : players)
         {
             System.out.printf("%15.2f (%7.2f) - %-40s%n",score.get(p),getNormalizedScore(score.get(p)),p.getName());
         }
         
-        System.out.println(System.nanoTime());
+        long endTime = System.nanoTime();
+        
+        System.out.println("The tournament took " + ((endTime-startTime)/1000000000.0) + " seconds, or " + ((endTime-startTime)/60000000000.0) + " minutes.");
     }
     public static double getNormalizedScore(double score)
     {
