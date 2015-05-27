@@ -29,7 +29,7 @@ public class RandomBot implements Player
         return rnd.nextInt(3);
     }
     
-    public void recieveResults(int[] voteCounts, double result)
+    public void receiveResults(int[] voteCounts, double result)
     {
         
     }
