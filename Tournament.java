@@ -15,7 +15,7 @@ import java.io.FileWriter;
  * This is the main controller for the Strategic Voting KOTH
  * 
  * @author PhiNotPi
- * @version 2/10/14
+ * @version 5/27/15
  */
 public class Tournament
 {
