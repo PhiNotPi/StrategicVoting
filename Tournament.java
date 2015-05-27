@@ -19,41 +19,15 @@ import java.io.FileWriter;
  */
 public class Tournament
 {
-    static final int elections = 1; //number of elections to be performed
-    static final int debug = 1;
+    static final int elections = 10000; //number of elections to be performed
+    static final int debug = 0;
     public static void main(String [] args)
     {
         long startTime = System.nanoTime();
         
         Player[] players = new Player[] {  //There's no separate file for contestants
-            new ExampleBot(elections), //name
-            new RandomBot(elections),
-            new RandomBot(elections),
-            new ExampleBot(elections),
-            new RandomBot(elections),
-            new RandomBot(elections),
-            new ExampleBot(elections),
-            new RandomBot(elections),
-            new RandomBot(elections),
-            new ExampleBot(elections),
-            new RandomBot(elections),
-            new RandomBot(elections),
-            new ExampleBot(elections),
-            new RandomBot(elections),
-            new RandomBot(elections),
-            new ExampleBot(elections),
-            new RandomBot(elections),
-            new RandomBot(elections),
-            new ExampleBot(elections),
-            new RandomBot(elections),
-            new RandomBot(elections),
-            new ExampleBot(elections),
-            new RandomBot(elections),
-            new RandomBot(elections),
-            new ExampleBot(elections),
-            new RandomBot(elections),
-            new ExampleBot(elections)
-            //new NonJavaPlayer("perlTest", new String[]{"perl", "perlTest.plx"}) //name and command
+            new PersonalFavoriteBot(elections), //name
+            new RandomBot(elections)
         };
         final Map<Player,Double>  score = new HashMap<Player,Double>();
         for(Player p : players)
