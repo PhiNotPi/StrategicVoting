@@ -1,22 +1,22 @@
 import java.lang.Math;
 import java.util.Random;
 /**
- * This bot picks the candidate wth the highest personal payoff, ignoring everyone else's actions.
+ * This bot picks the candidate with the highest personal payoff, ignoring everyone else's actions.
  * 
  * @author PhiNotPi 
  * @version 5/27/15
  */
-public class ExampleBot implements Player
+public class PersonalFavoriteBot implements Player
 {
     Random rnd;
     String name;
     /**
-     * Constructor for objects of class ExampleBot
+     * Constructor for objects of class PersonalFavoriteBot
      */
-    public ExampleBot(int e)
+    public PersonalFavoriteBot(int e)
     {
        rnd = new Random(); 
-       name = "ExampleBot" + rnd.nextInt(1000);
+       name = "PersonalFavoriteBot" + rnd.nextInt(1000);
     }
 
     public String getName()
