@@ -38,7 +38,7 @@ public class ExampleBot implements Player
         return maxloc;
     }
     
-    public void recieveResults(int[] voteCounts, double result)
+    public void receiveResults(int[] voteCounts, double result)
     {
         
     }
