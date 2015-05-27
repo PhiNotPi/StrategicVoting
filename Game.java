@@ -12,7 +12,6 @@ public class Game
     int[][] payoffs;
     int[] totalPayoffs;
     int[] voteCounts;
-    int votersRemaining;
     int debug;
     Random rnd;
     public Game(Player [] p, int dbg)
@@ -26,13 +25,9 @@ public class Game
         for(int i = 0; i < players.length; i++){
             payoffs[i] = createPlayerPayoffs();
         }
-        voteCounts = new int[]{0,0,0};
-        votersRemaining = players.length;
+        
         if(debug > 0){
-            System.out.printf("%4d%4d%4d - %-40s%n",totalPayoffs[0],totalPayoffs[1],totalPayoffs[2],"Total");
-            for(int i = 0; i < players.length; i++){
-                System.out.printf("%4d%4d%4d - %-40s%n",payoffs[i][0],payoffs[i][1],payoffs[i][2],players[i].getName());
-            }
+            System.out.printf("%n%5d%5d%5d - %-40s%n",totalPayoffs[0],totalPayoffs[1],totalPayoffs[2],"Total Payoffs");
         }
     }
     
@@ -76,9 +71,13 @@ public class Game
     
     public double[] run()
     {
-        for(int i = 0; i < players.length; i++)
+        voteCounts = new int[]{0,0,0};
+        if(debug > 0){
+            System.out.println("vote vc0 vc1 vc2 vrm po0 po1 po2 - name");
+        }
+        for(int i = players.length - 1; i >= 0; i--)
         {
-            int vote = players[i].getVote(copy(voteCounts),votersRemaining,copy(payoffs[i]),copy(totalPayoffs));
+            int vote = players[i].getVote(copy(voteCounts),i,copy(payoffs[i]),copy(totalPayoffs));
             if(vote >= 0 && vote <= 2)
             {
                 voteCounts[vote]++;
@@ -87,7 +86,13 @@ public class Game
             {
                 voteCounts[rnd.nextInt(3)]++;
             }
-            votersRemaining--;
+            if(debug > 0){
+                System.out.printf("%4d",vote);
+                for(int vc : voteCounts){System.out.printf("%4d",vc);}
+                System.out.printf("%4d",i);
+                for(int po : payoffs[i]){System.out.printf("%4d",po);}
+                System.out.printf(" - %-40s%n",players[i].getName());
+            }
         }
         int highest = 0;
         for(int count : voteCounts)
