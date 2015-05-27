@@ -120,7 +120,7 @@ public class Game
         for(int p = 0; p < players.length; p++)
         {
             results[p] /= winCount;
-            players[p].recieveResults(copy(voteCounts),results[p]);
+            players[p].receiveResults(copy(voteCounts),results[p]);
         }
         return results;
     }
