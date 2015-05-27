@@ -44,13 +44,12 @@ public class Game
     
     public int[] createPlayerPayoffs()
     {
-        int cut1 = rnd.nextInt(101);
-        int cut2 = rnd.nextInt(101);
-        while(cut1 + cut2 > 100)
-        {
-          cut1 = rnd.nextInt(101);
-          cut2 = rnd.nextInt(101);  
-        }
+        int cut1;
+        int cut2;
+        do{
+            cut1 = rnd.nextInt(101);
+            cut2 = rnd.nextInt(101);  
+        } while (cut1 + cut2 > 100);
         int rem = 100 - cut1 - cut2;
         int[] set = new int[]{cut1,cut2,rem};
         totalPayoffs[0] += set[0];
