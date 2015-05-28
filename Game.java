@@ -84,6 +84,10 @@ public class Game
             else
             {
                 voteCounts[rnd.nextInt(3)]++;
+                if(debug > 0)
+                {
+                    System.out.println("Invalid reply of " + vote + " given by " + players[i].getName());
+                }
             }
             if(debug > 0){
                 System.out.printf("%4d",vote);
