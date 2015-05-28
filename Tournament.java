@@ -19,7 +19,7 @@ import java.io.FileWriter;
  */
 public class Tournament
 {
-    static final int elections = 10000; //number of elections to be performed
+    static final int elections = 10000000; //number of elections to be performed
     static final int debug = 0;
     public static void main(String [] args)
     {
@@ -27,6 +27,19 @@ public class Tournament
         
         Player[] players = new Player[] {  //There's no separate file for contestants
             new PersonalFavoriteBot(elections), //name
+            //new Follower(elections),
+            //new SometimesSecondBestBot(elections),
+            //new ExtremistBot(elections),
+            //new NoThirdPartyBot(elections),
+            //new ABotDoNotForget(elections),
+            //new CircumspectBot(elections),
+            //new Optimist(elections),
+            //new SmashAttemptByEquality(elections),
+            //new NoClueBot(elections),
+            //new BestViableCandidate(elections),
+            //new BasicBot(elections),
+            //new Odysseus(elections),
+            //new HipBot(elections),
             new RandomBot(elections)
         };
         final Map<Player,Double>  score = new HashMap<Player,Double>();
@@ -48,7 +61,7 @@ public class Tournament
                 return score.get(b).compareTo(score.get(a));
             }
         });
-        System.out.printf("%nLeaderboard:%n");;
+        System.out.printf("%nLeaderboard - " + elections + " elections:%n");;
         for(Player p : players)
         {
             System.out.printf("%15.2f (%7.2f) - %-40s%n",score.get(p),getNormalizedScore(score.get(p)),p.getName());
